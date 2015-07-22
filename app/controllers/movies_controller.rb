@@ -41,7 +41,6 @@ class MoviesController < ApplicationController
 
   def show
     @movie = Movie.find_by(:id => params["id"])
-    @roles = Role.where(movie_id: @movie.id)
   end
 
 end

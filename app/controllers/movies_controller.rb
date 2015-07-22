@@ -25,7 +25,12 @@ class MoviesController < ApplicationController
   end
 
   def index
-    @movies = Movie.all
+    if params["keyword"].present?
+      k = params["keyword"].strip
+      @movies = Movie.where("title LIKE '%#{k}%'")
+    else
+      @movies = Movie.all
+    end
   end
 
   def destroy
@@ -36,6 +41,7 @@ class MoviesController < ApplicationController
 
   def show
     @movie = Movie.find_by(:id => params["id"])
+    @roles = Role.where(movie_id: @movie.id)
   end
 
 end

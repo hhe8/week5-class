@@ -14,5 +14,16 @@
 
   <h3>Cast</h3>
   <!-- CHALLENGE #3: Show the actors here (hint: investigate the Role model) -->
+  <ul>
+    <% @roles.each do |role| %>
+      <li>
+        <%= Actor.find(role.actor_id).name %>
+      </li>
+    <% end %>
+  </ul>
+
+
+
+
 
 </div>
